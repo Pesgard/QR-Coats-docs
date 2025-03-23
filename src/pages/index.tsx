@@ -26,22 +26,8 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to="/docs/intro"
             style={{ marginRight: '10px' }}>
-            Docusaurus Tutorial - 5min ⏱️
+            Documentación 📚
           </Link>
-          
-          {isAuthenticated ? (
-            <Link
-              className="button button--success button--lg"
-              to="/protected">
-              Acceder a Contenido Protegido 🔒
-            </Link>
-          ) : (
-            <Link
-              className="button button--info button--lg"
-              to="/auth">
-              Iniciar Sesión / Registrarse 🚪
-            </Link>
-          )}
         </div>
         
         {isAuthenticated && user && (
@@ -59,7 +45,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="QRcoats Documentación <head />">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
