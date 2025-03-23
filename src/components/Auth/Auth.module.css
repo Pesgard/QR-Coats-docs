@@ -1,0 +1,93 @@
+.authContainer {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.formGroup label {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.formGroup input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.authButton {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #2e8555;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.authButton:hover {
+  background-color: #277249;
+}
+
+.authButton:disabled {
+  background-color: #93c5ac;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #e74c3c;
+  background-color: #fae7e6;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.success {
+  color: #2ecc71;
+  background-color: #e8f8f5;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.authNav {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.authNav button {
+  background: none;
+  border: none;
+  color: #2e8555;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.authNavText {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #666;
+} 

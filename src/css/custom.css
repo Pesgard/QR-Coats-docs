@@ -6,25 +6,100 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* QRcoats primary color palette - Light theme */
+  --ifm-color-primary: #A1C4FD; /* QRcoats brand blue */
+  --ifm-color-primary-dark: #7EACFC;
+  --ifm-color-primary-darker: #5E95FB;
+  --ifm-color-primary-darkest: #3E7DFA;
+  --ifm-color-primary-light: #C1D7FE;
+  --ifm-color-primary-lighter: #E0EAFE;
+  --ifm-color-primary-lightest: #FFFFFF;
+  
+  /* Secondary accent colors */
+  --ifm-color-secondary: #B8BCFE; /* QRcoats secondary purple-blue */
+  --ifm-color-tertiary: #CDB4FF; /* QRcoats tertiary light purple */
+  --ifm-color-success: #4ECCA3; /* Green for success */
+  --ifm-color-info: #54c7ec;
+  --ifm-color-warning: #ffd338;
+  --ifm-color-danger: #ff5151;
+  
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(161, 196, 253, 0.1);
+  
+  /* Additional custom variables */
+  --qrcoats-gray-light: #f5f6f7;
+  --qrcoats-gray: #606770;
+  --qrcoats-gray-dark: #1c1e21;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* QRcoats primary color palette - Dark theme */
+  --ifm-color-primary: #B1CFFD; /* Slightly brighter primary for dark theme */
+  --ifm-color-primary-dark: #8FB3FC;
+  --ifm-color-primary-darker: #6E98FB;
+  --ifm-color-primary-darkest: #4D7DFA;
+  --ifm-color-primary-light: #D0E0FE;
+  --ifm-color-primary-lighter: #EFF5FF;
+  --ifm-color-primary-lightest: #FFFFFF;
+  
+  /* Secondary accent colors for dark theme */
+  --ifm-color-secondary: #C8CBFE; /* Brighter secondary for dark theme */
+  --ifm-color-tertiary: #DDC8FF; /* Brighter tertiary for dark theme */
+  --ifm-color-success: #5EDDB4; /* Brighter green for dark theme */
+  --ifm-color-info: #79d3f0;
+  --ifm-color-warning: #ffd952;
+  --ifm-color-danger: #ff7070;
+  
+  --docusaurus-highlighted-code-line-bg: rgba(177, 207, 253, 0.3);
+  
+  /* Background colors for dark theme */
+  --ifm-background-color: #121212;
+  --ifm-background-surface-color: #1e1e1e;
+}
+
+/* Custom styling for navbar */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom styling for footer */
+.footer {
+  --ifm-footer-background-color: #3E7DFA; /* Darker shade of primary */
+}
+
+/* Button styling */
+.button {
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.button--primary {
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
+
+.button--primary:hover {
+  background-color: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+}
+
+.button--secondary {
+  background-color: var(--ifm-color-secondary);
+  border-color: var(--ifm-color-secondary);
+}
+
+.button--secondary:hover {
+  background-color: #A5A9FD; /* Darker secondary on hover */
+  border-color: #A5A9FD;
+}
+
+.button--tertiary {
+  background-color: var(--ifm-color-tertiary);
+  border-color: var(--ifm-color-tertiary);
+}
+
+.button--tertiary:hover {
+  background-color: #BDA0FF; /* Darker tertiary on hover */
+  border-color: #BDA0FF;
 }
