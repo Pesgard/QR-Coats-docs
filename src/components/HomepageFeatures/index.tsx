@@ -11,31 +11,34 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Documentación Completa',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-       Holi
+        Accede a guías detalladas sobre todos los componentes de QRcoats: 
+        Panel de Administración, SuperAdmin, Aplicación de Clientes, y APIs.
+        Todo diseñado para facilitar la comprensión y el desarrollo.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Sistema de QR Inteligente',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Descubre cómo QRcoats implementa un sistema avanzado de códigos QR
+        para seguimiento de productos, validación de autenticidad
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Arquitectura Moderna',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Explora la arquitectura basada en AWS de QRcoats, 
+        con integraciones de NestJS, React, y mongoDB 
+        que conforman un ecosistema robusto y escalable.
       </>
     ),
   },
