@@ -2,46 +2,39 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Documentación de QRcoats
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Bienvenido a la documentación completa del sistema QRcoats. Esta documentación está diseñada para ayudar a los desarrolladores a entender cómo funciona cada parte del sistema y cómo interactúan entre sí.
 
-## Getting Started
+## Visión General del Sistema
 
-Get started by **creating a new site**.
+QRcoats es una plataforma integral que consta de varias aplicaciones que trabajan en conjunto:
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+- **Admin**: Panel de administración para gestionar el sistema
+- **SuperAdmin**: Interfaz administrativa con privilegios extendidos
+- **Customers**: Aplicación orientada a clientes
+- **Employees**: Portal para empleados
+- **Servicios API**:
+  - **api-auth**: Servicio de autenticación y autorización
+  - **api_employees**: API de gestión de empleados
+  - **qr-api**: API de generación y gestión de códigos QR
 
-### What you'll need
+## Primeros Pasos
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+Para comenzar con la documentación:
 
-## Generate a new site
+1. Selecciona el proyecto sobre el que quieres aprender en la barra lateral
+2. Navega a través de las diferentes secciones para entender aspectos específicos de ese proyecto
+3. Consulta la sección de Arquitectura para entender cómo se integran todos los componentes
 
-Generate a new Docusaurus site using the **classic template**.
+## Cómo Usar Esta Documentación
 
-The classic template will automatically be added to your project after you run the command:
+Esta documentación sirve como recurso central para los desarrolladores que trabajan en el sistema QRcoats. Encontrarás información detallada sobre:
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+- Arquitectura del proyecto y dependencias
+- Configuración del entorno de desarrollo y flujos de trabajo
+- Endpoints de API e integraciones
+- Componentes frontend y funcionalidad
+- Conceptos clave y patrones utilizados en todo el sistema
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Utiliza la barra lateral para navegar por los diferentes proyectos y sus secciones.
