@@ -2,48 +2,38 @@
 sidebar_position: 1
 ---
 
-# System Architecture
+# Arquitectura del sistema
 
-This section provides a comprehensive overview of the QRcoats system architecture, showing how all components interact with each other.
+Esta seccion muestra una vista detallada de la arquitectura del sistema que se usa en QRCoats, mostrando como todas las diferentes instancias se relacionan entre si e interactuan una con la otra
 
 ## Overview
 
-QRcoats follows a microservices architecture with separate frontend applications and backend API services:
+QRcoats sigue una arquitectura modular que separa el frontend en diferentes aplicaciones y el backend en diferentes servicios:
 
-- Frontend applications (Admin, SuperAdmin, Customers, Employees)
-- Backend services (api-auth, api-employees, qr-api)
+- Aplicaciones del Frontend (Admin, SuperAdmin, Customers, Employees)
+- Servicios del Backend (api-auth, api-employees, qr-api)
 
-## System Diagram
+## Diagrama del sistema
 
-```mermaid
-graph TD
-    A[Admin Panel] --> Auth[api-auth]
-    B[SuperAdmin Panel] --> Auth
-    C[Customers App] --> Auth
-    D[Employees App] --> Auth
-    Auth --> QR[qr-api]
-    Auth --> Emp[api-employees]
-    QR --> DB[(Database)]
-    Emp --> DB
-```
+![System Diagram](/content/arquitectura.jpg)
 
-## Key Architecture Documents
+## Documentos Clave de Arquitectura
 
-- [Components Overview](./components/index.md) - Detailed information about each component
-- [Data Flow](./data-flow/index.md) - How data flows between components
-- [Deployment Architecture](./deployment/index.md) - Information about deployment and infrastructure
+- [Descripción General de Componentes](./components/index.md) - Información detallada sobre cada componente
+- [Flujo de Datos](./data-flow/index.md) - Cómo fluyen los datos entre componentes
+- [Arquitectura de Implementación](./deployment/index.md) - Información sobre implementación e infraestructura
 
-## Component Interactions
+## Interacciones de Componentes
 
-- **Frontend applications** consume the backend APIs
-- **api-auth** handles authentication and authorization for all applications
-- **api-employees** manages employee-specific functionality
-- **qr-api** handles QR code generation and management
+- **Aplicaciones Frontend** consumen las APIs del backend
+- **api-auth** maneja la autenticación y autorización para todas las aplicaciones
+- **api-employees** gestiona la funcionalidad específica para empleados
+- **qr-api** maneja la generación y gestión de códigos QR
 
-## Technology Stack
+## Stack Tecnológico
 
 - Frontend: React/TypeScript
 - Backend: NestJS
-- Database: [Database Technology]
-- Authentication: JWT/OAuth
-- Deployment: [Deployment Technology] 
+- Base de Datos: [Tecnología de Base de Datos]
+- Autenticación: JWT/OAuth
+- Implementación: [Tecnología de Implementación]

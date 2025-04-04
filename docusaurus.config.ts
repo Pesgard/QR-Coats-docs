@@ -85,6 +85,19 @@ const config: Config = {
     ],
   ],
 
+  markdown: {
+    mermaid: true,
+  },
+
+  themes: [
+    [
+      "@docusaurus/theme-mermaid",
+      {
+        mermaid: true,
+      },
+    ],
+  ],
+  
   themeConfig: {
     // Replace with your project's social card
     image: "img/qrcoats-social-card.jpg",
