@@ -12,7 +12,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Documentación Completa',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/document.svg').default,
     description: (
       <>
         Accede a guías detalladas sobre todos los componentes de QRcoats: 
@@ -23,7 +23,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Sistema de QR Inteligente',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('@site/static/img/qr-code.svg').default,
     description: (
       <>
         Descubre cómo QRcoats implementa un sistema avanzado de códigos QR
@@ -33,7 +33,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Arquitectura Moderna',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Svg: require('@site/static/img/cloud-computing.svg').default,
     description: (
       <>
         Explora la arquitectura basada en AWS de QRcoats, 

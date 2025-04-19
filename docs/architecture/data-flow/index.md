@@ -66,9 +66,7 @@ sequenceDiagram
     
     QR->>Admin: Respuesta con URL y datos del QR
     Admin->>Usuario: Mostrar QR generado
-    
-    Note over Usuario,DB: El QR contiene información encriptada que solo el sistema puede interpretar
-```
+  ```
 
 ## Flujo de Validación de Códigos QR
 
@@ -102,39 +100,6 @@ sequenceDiagram
     
     QR->>AppCliente: Respuesta con estado y datos
     AppCliente->>Usuario: Mostrar resultado de validación
-```
-
-## Flujo de Gestión de Empleados
-
-La gestión de empleados permite asignar tareas y hacer seguimiento de su desempeño.
-
-```mermaid
-sequenceDiagram
-    autonumber
-    participant Admin as Administrador
-    participant AdminPanel as Panel Administrador
-    participant Auth as API Autenticación
-    participant EmpAPI as API Empleados
-    participant QR as API QR
-    participant DB as Base de Datos
-    
-    Admin->>AdminPanel: Crear/Asignar tarea a empleado
-    AdminPanel->>Auth: Autenticar administrador
-    Auth->>AdminPanel: Token JWT
-    
-    AdminPanel->>EmpAPI: Solicitud de asignación de tarea
-    EmpAPI->>DB: Almacenar tarea
-    
-    alt Tarea relacionada con QR
-        EmpAPI->>QR: Consultar datos de QR asociados
-        QR->>EmpAPI: Información de QR relevante
-        EmpAPI->>DB: Actualizar tarea con datos de QR
-    end
-    
-    EmpAPI->>AdminPanel: Confirmación de creación
-    AdminPanel->>Admin: Notificar éxito
-    
-    Note over EmpAPI,DB: Se programa notificación al empleado
 ```
 
 ## Flujo de Actualización de Estado de QR
@@ -173,64 +138,136 @@ sequenceDiagram
 
 ## Flujo de Sincronización en Tiempo Real
 
-QRcoats utiliza Firebase para mantener sincronizados los datos en tiempo real entre diferentes clientes.
+QRcoats utiliza MongoDB para mantener sincronizados los datos en tiempo real entre diferentes clientes.
 
 ```mermaid
 sequenceDiagram
     autonumber
     participant Cliente1 as Cliente 1
     participant Cliente2 as Cliente 2
-    participant Firebase as Firebase Realtime DB
+    participant MongoDB as MongoDB Change Streams
     participant QR as API QR
     participant DB as Base de Datos Principal
     
     Cliente1->>QR: Solicitar actualización de QR
     QR->>DB: Actualizar datos
-    QR->>Firebase: Publicar evento de cambio
-    Firebase-->>Cliente1: Notificar cambio aplicado
-    Firebase-->>Cliente2: Notificar cambio en tiempo real
+    DB->>MongoDB: Generar evento de change stream
+    MongoDB-->>Cliente1: Notificar cambio aplicado
+    MongoDB-->>Cliente2: Notificar cambio en tiempo real
     Cliente2->>Cliente2: Actualizar UI automáticamente
     
-    Note over Firebase,Cliente2: Los clientes suscritos reciben actualizaciones sin necesidad de refrescar
+    Note over MongoDB,Cliente2: Los clientes suscritos reciben actualizaciones sin necesidad de refrescar
 ```
 
 ## Almacenamiento de Datos
 
-QRcoats utiliza diferentes bases de datos dependiendo del servicio y los requisitos de rendimiento:
+QRcoats utiliza MongoDB como su sistema de base de datos principal para todos sus componentes. Esta elección permite una gestión flexible de los datos con un esquema adaptable a las necesidades cambiantes del negocio.
 
-### Base de Datos Principal (PostgreSQL)
+### Base de Datos MongoDB
 
-- **API de Autenticación**: 
-  - Cuentas de usuario
-  - Roles y permisos
-  - Registro de inicios de sesión
-  - Tokens de refresco
-  
-- **API de Empleados**:
-  - Datos de empleados
-  - Asignaciones de tareas
-  - Métricas de rendimiento
-  - Informes generados
+El sistema utiliza Mongoose como ODM (Object Document Mapper) para interactuar con MongoDB. Ambas APIs (`api_employees` y `qr-api`) se conectan a MongoDB a través de la configuración establecida en sus archivos `.env` y utilizan el módulo `MongooseModule` de NestJS para definir y gestionar sus modelos.
 
-- **API de QR**:
-  - Datos básicos de QRs
-  - Relaciones entre QRs y productos
-  - Configuraciones de seguridad
-  - Estadísticas de uso
+#### Colecciones Principales del Sistema
 
-### Base de Datos en Tiempo Real (Firebase)
+##### Usuarios y Autenticación
 
-- Actualizaciones en tiempo real de estado de QRs
-- Notificaciones a empleados
-- Estados de escaneo activos
-- Registros temporales de acciones
+- **Users**: Almacena información de todos los usuarios del sistema con esquemas que incluyen:
 
-### Almacenamiento de Objetos (AWS S3)
+  ```typescript
+  @Prop() name: string;
+  @Prop() username: string;
+  @Prop() email: string;
+  @Prop() password: string;
+  @Prop() rol: string;
+  @Prop() status: boolean;
+  ```
 
-- Imágenes de QRs generados
-- Recursos visuales asociados a productos
-- Backups de códigos generados
-- Archivos de informes
+- **Authentication**: Gestiona los tokens JWT y registros de inicios de sesión
+
+##### Gestión de Negocios
+
+- **Clubs**: Información de los clubes registrados en el sistema
+
+  ```typescript
+  @Prop() name: string;
+  @Prop() icon: string; 
+  @Prop() customNote: string;
+  @Prop() openingHour: string;
+  @Prop() closingHour: string;
+  @Prop() services: Array<Service>;
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Plan' }) plan: mongoose.Schema.Types.ObjectId;
+  ```
+
+- **Plans**: Define los planes disponibles para los clubes
+
+  ```typescript
+  @Prop() planName: string;
+  @Prop() description: string;
+  @Prop() numberCustomFields: number;
+  @Prop() numberLocations: number;
+  ```
+
+##### Gestión de Recursos
+
+- **Locations**: Ubicaciones físicas dentro de los clubes
+- **Racks**: Estanterías para guardar objetos
+- **Slots**: Espacios específicos dentro de las ubicaciones
+- **Hangers**: Colgadores utilizados para prendas
+
+##### Códigos QR y Órdenes
+
+- **QRs**: Datos de todos los códigos QR generados
+
+  ```typescript
+  @Prop() email: string;
+  @Prop() name: string;
+  @Prop() paymentStatus: boolean;
+  @Prop() services: service;
+  @Prop() qrstatus: string;
+  @Prop() clubId: mongoose.Schema.Types.ObjectId;
+  @Prop() active: boolean;
+  @Prop() used: boolean;
+  @Prop() urlQr: string;
+  ```
+
+- **Orders**: Pedidos realizados en el sistema
+- **Payments**: Información de pagos procesados
+
+##### Elementos Específicos de qr-api
+
+- **Pass**: Datos para gestión de pases digitales
+- **DiscountCode**: Códigos de descuento disponibles
+- **Daily**: Registros diarios de actividad
+- **Registros**: Historial de registros generales
+
+### Relaciones entre Entidades
+
+El sistema utiliza IDs de MongoDB (`ObjectId`) para establecer relaciones entre las diferentes entidades:
+
+```typescript
+// Ejemplo de relación entre Club y Plan
+@Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Plan' })
+plan: mongoose.Schema.Types.ObjectId;
+
+// Ejemplo de relación uno a muchos (Usuario a Empleados)
+@Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] })
+employees: mongoose.Schema.Types.ObjectId[];
+```
+
+### Cambios en Tiempo Real
+
+MongoDB proporciona capacidades de cambios en tiempo real a través de Change Streams, permitiendo que la aplicación reaccione instantáneamente a modificaciones en la base de datos. Esto es particularmente útil para:
+
+- Actualización de estados de QR
+- Notificaciones en tiempo real
+- Sincronización entre diferentes clientes
+
+### Consideraciones de Seguridad y Rendimiento
+
+- Las contraseñas se almacenan encriptadas usando bcrypt
+- Los índices en MongoDB están configurados para optimizar las consultas frecuentes
+- Se utilizan referencias entre documentos para mantener la consistencia de los datos
+- La autenticación se realiza mediante tokens JWT con tiempos de expiración configurables
 
 ## Consideraciones de Seguridad
 
@@ -257,4 +294,4 @@ La arquitectura de QRcoats implementa múltiples capas de seguridad para protege
   - Validación estricta de datos de entrada
   - Protección contra inyección SQL y NoSQL
   - Cabeceras de seguridad configuradas (CORS, CSP, X-XSS-Protection)
-  - Escaneo regular de vulnerabilidades y actualizaciones 
+  - Escaneo regular de vulnerabilidades y actualizaciones

@@ -15,7 +15,6 @@ QRcoats es una plataforma integral que consta de varias aplicaciones que trabaja
 - **Customers**: Aplicación orientada a clientes
 - **Employees**: Portal para empleados
 - **Servicios API**:
-  - **api-auth**: Servicio de autenticación y autorización
   - **api_employees**: API de gestión de empleados
   - **qr-api**: API de generación y gestión de códigos QR
 

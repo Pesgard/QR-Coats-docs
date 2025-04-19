@@ -52,9 +52,10 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Backend Services',
       items: [
-        'api-auth/index',
+        'architecture/backend-services/swagger',
         'api-employees/index',
         'qr-api/index',
+
       ],
     },
   ],

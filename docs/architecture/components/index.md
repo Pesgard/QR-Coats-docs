@@ -106,7 +106,6 @@ La Aplicación de Empleados es una aplicación Angular diseñada para el persona
 - TypeScript
 - Angular Material
 - RxJS para programación reactiva
-- Firebase/Angular Fire para backend
 - QR Scanner y QRCode para manipulación de códigos QR
 - Jest para pruebas unitarias
 
@@ -121,36 +120,6 @@ La Aplicación de Empleados es una aplicación Angular diseñada para el persona
 [Más información sobre la Aplicación de Empleados](../../employees/index.md)
 
 ## Componentes Backend
-
-### API de Autenticación
-
-**Repositorio:** api-auth
-
-El servicio API de Autenticación gestiona la autenticación y autorización para todos los componentes del sistema QRcoats. Proporciona endpoints seguros para la gestión de usuarios y permisos.
-
-**Características principales:**
-
-- Autenticación mediante JWT
-- Gestión de usuarios y perfiles
-- Control de acceso basado en roles (RBAC)
-- Seguridad y verificación de tokens
-- Integración con proveedores de autenticación externos
-
-**Tecnologías:**
-
-- NestJS
-- TypeScript
-- JWT para tokens de autenticación
-- Estrategias de seguridad avanzadas
-
-**Endpoints principales:**
-
-- `/auth/login` - Autenticación de usuarios
-- `/auth/register` - Registro de nuevos usuarios
-- `/users` - Gestión de usuarios
-- `/roles` - Gestión de roles y permisos
-
-[Más información sobre la API de Autenticación](../../api-auth/index.md)
 
 ### API de Empleados
 
@@ -206,10 +175,10 @@ El servicio API de QR es el núcleo del sistema QRcoats, encargado de la generac
 
 **Endpoints principales:**
 
-- `/qr/generate` - Generación de nuevos códigos QR
-- `/qr/validate` - Validación de códigos QR
-- `/qr/info` - Obtención de información asociada a QR
-- `/qr/analytics` - Análisis de uso y escaneos
+- @Post `/qr` - Generación de nuevos códigos QR
+- @Get `/qr` - Validación de códigos QR
+- @Patch `/qr/{id}` - Actualizar información asociada a QR
+- @Put `/qr/delete/{id}` - Desactivar un QR
 
 [Más información sobre la API de QR](../../qr-api/index.md)
 

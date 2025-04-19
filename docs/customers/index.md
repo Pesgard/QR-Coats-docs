@@ -2,71 +2,199 @@
 sidebar_position: 1
 ---
 
-# Customers Application
+# Aplicación para Clientes
 
-The Customers Application is a web application designed for end-users (customers) to interact with the QRcoats system.
+La aplicación para Clientes (Customers) es una aplicación web diseñada para usuarios finales que interactúan con el sistema QRcoats, permitiéndoles gestionar sus servicios y acceder a las funcionalidades del sistema.
 
-## Overview
+## Visión General
 
-The Customers application allows users to:
-- Register and manage accounts
-- Generate and manage QR codes
-- View usage statistics
-- Access customer support features
+La aplicación para Clientes permite a los usuarios:
+- Registrarse y gestionar sus cuentas
+- Explorar y seleccionar clubes disponibles
+- Solicitar y gestionar servicios
+- Realizar pagos
+- Ver historial de recibos y servicios contratados
+- Gestionar su perfil de usuario
 
-## Getting Started
+## Primeros Pasos para Desarrolladores
 
-### Prerequisites
+### Requisitos Previos
 
-- Node.js (v16 or higher)
-- npm or pnpm
+- Node.js (v16 o superior)
+- npm o pnpm
+- Git
 
-### Installation
+### Instalación y Configuración
 
 ```bash
-# Navigate to the Customers directory
+# Clonar el repositorio
+git clone <url-del-repositorio>
+
+# Navegar al directorio Customers
 cd Customers
 
-# Install dependencies
-npm install # or pnpm install
+# Instalar dependencias
+npm install # o pnpm install
 
-# Start development server
-npm run dev
+# Iniciar servidor de desarrollo
+npm run dev --host
 ```
 
-## Project Structure
+### Scripts Disponibles
+
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Genera la versión de producción
+- `npm run lint` - Ejecuta el linter para verificar el código
+- `npm run preview` - Inicia un servidor para previsualizar la versión de producción
+
+### Variables de Entorno
+
+El proyecto utiliza diferentes archivos de entorno para distintos ambientes:
+
+- `.env.development`: Configuración para desarrollo
+- `.env.staging`: Configuración para entorno de pruebas
+- `.env.production`: Configuración para producción
+
+## Estructura del Proyecto
 
 ```
 Customers/
-├── public/         # Static assets
-├── src/            # Source code
-│   ├── components/ # Reusable components
-│   ├── pages/      # Page components
-│   ├── services/   # API services
-│   ├── hooks/      # Custom React hooks
-│   ├── utils/      # Utility functions
-│   ├── contexts/   # React contexts
-│   ├── styles/     # CSS and styling
-│   ├── App.tsx     # Main App component
-│   └── main.tsx    # Entry point
-├── package.json    # Dependencies and scripts
-└── vite.config.ts  # Vite configuration
+├── public/            # Activos estáticos
+├── src/               # Código fuente
+│   ├── assets/        # Imágenes, fuentes y otros recursos
+│   ├── auth/          # Componentes y rutas de autenticación
+│   ├── clube/         # Módulo principal de gestión de clubes
+│   │   ├── components/  # Componentes reutilizables
+│   │   ├── interfaces/  # Interfaces TypeScript
+│   │   ├── layout/      # Componentes de layout
+│   │   ├── pages/       # Páginas organizadas por funcionalidad
+│   │   │   ├── ClubManagment/  # Gestión de servicios y pagos
+│   │   │   ├── HomeClubes/     # Página principal con clubes
+│   │   │   ├── Profile/        # Gestión de perfil de usuario
+│   │   │   └── ReceiptHistory/ # Historial de recibos
+│   │   └── routes/      # Configuración de rutas
+│   ├── components/    # Componentes globales
+│   ├── constants/     # Constantes y configuraciones
+│   ├── firebase/      # Configuración de Firebase
+│   ├── helepers/      # Funciones de ayuda
+│   ├── hooks/         # Hooks personalizados
+│   ├── models/        # Modelos y tipos de datos
+│   ├── router/        # Configuración de enrutamiento
+│   ├── services/      # Servicios para comunicación con APIs
+│   ├── store/         # Configuración de Redux
+│   ├── theme/         # Configuración del tema
+│   ├── tools/         # Funciones de utilidad
+│   ├── ui/            # Componentes de UI genéricos
+│   ├── QrCoatApp.tsx  # Componente principal
+│   ├── main.tsx       # Punto de entrada
+│   └── styles.css     # Estilos globales
+├── package.json      # Dependencias y scripts
+└── vite.config.ts    # Configuración de Vite
 ```
 
-## Key Features
+## Tecnologías Principales
 
-[Detailed explanation of key features]
+La aplicación para Clientes está construida con:
 
-## API Integration
+- **React 18**: Para la construcción de la interfaz de usuario
+- **TypeScript**: Para seguridad de tipos
+- **Redux**: Para gestión de estado global mediante @reduxjs/toolkit
+- **Redux Persist**: Para persistencia de estado
+- **React Router v6**: Para enrutamiento
+- **Material UI**: Como biblioteca principal de componentes
+- **Bootstrap**: Para estilos adicionales y componentes
+- **React Hook Form**: Para manejo de formularios
+- **Yup**: Para validación de datos
+- **Axios**: Para comunicación con APIs REST
+- **Stripe**: Para procesamiento de pagos
+- **Google OAuth**: Para inicio de sesión con Google
+- **Firebase**: Para funcionalidades adicionales
+- **Socket.io-client**: Para comunicación en tiempo real
+- **Vite**: Como bundler y herramienta de desarrollo
 
-The Customers application integrates with the following APIs:
-- api-auth for authentication
-- qr-api for QR code generation and management
+## Características Principales
 
-## User Experience
+### Autenticación y Registro
+- Sistema de login/registro
+- Integración con Google OAuth
+- Persistencia de sesión
 
-[Details about the user experience and UI/UX design]
+### Exploración de Clubes
+- Lista de clubes disponibles
+- Detalles del club seleccionado
+- Información sobre ubicaciones y servicios
 
-## Technical Details
+### Gestión de Servicios
+- Selección de servicios
+- Configuración de opciones
+- Formularios para invitados
 
-[Additional technical details of the Customers application] 
+### Proceso de Pago
+- Integración con Stripe
+- Gestión de tarjetas
+- Aplicación de códigos de descuento
+
+### Historial y Recibos
+- Visualización de servicios contratados
+- Detalles de compras anteriores
+- Generación de recibos en PDF
+
+### Perfil de Usuario
+- Gestión de datos personales
+- Preferencias de usuario
+- Historial de actividad
+
+## Servicios y APIs
+
+La aplicación para Clientes interactúa con varias APIs a través de servicios dedicados:
+
+```typescript
+// Estructura de servicios disponibles
+export * from './auth.services';    // Autenticación de usuarios
+export * from './club.services';    // Gestión de clubes
+export * from './order.services';   // Gestión de órdenes y pagos
+```
+
+Ejemplo de servicio de API para clubes:
+
+```typescript
+// Ejemplo de servicio para obtener clubes
+export const getClubes = () => {
+  const controller = loadAbort();
+  return {
+    call: axios.get(`${currentEnpoint}clubes`, {
+      signal: controller.signal,
+    }),
+    controller,
+  };
+};
+```
+
+## Flujo del Usuario
+
+La aplicación sigue un flujo de usuario intuitivo:
+
+1. **Registro/Login**: El usuario se registra o inicia sesión
+2. **Selección de Club**: Visualiza y selecciona un club de la lista disponible
+3. **Selección de Servicios**: Elige los servicios que desea adquirir
+4. **Proceso de Pago**: Completa la información de pago
+5. **Confirmación**: Recibe confirmación y puede ver el historial de servicios
+
+## Proceso de Desarrollo
+
+Para desarrollar nuevas funcionalidades o modificar las existentes, se recomienda:
+
+1. **Comprender el flujo de usuario**: Navegar por la aplicación para entender la experiencia del usuario
+2. **Revisar los componentes existentes**: Familiarizarse con los componentes disponibles
+3. **Utilizar hooks personalizados**: Aprovechar los hooks del proyecto para reutilizar lógica
+4. **Seguir patrones de diseño**: Mantener la coherencia con los patrones establecidos
+5. **Probar en diferentes dispositivos**: La aplicación está diseñada para ser responsiva
+
+## Buenas Prácticas
+
+1. **Componentes modulares**: Crear componentes pequeños y reutilizables
+2. **Tipado estricto**: Utilizar TypeScript para todos los componentes y funciones
+3. **Estado centralizado**: Gestionar el estado global en Redux
+4. **Validación de formularios**: Utilizar Yup para validar todos los formularios
+5. **Código limpio**: Seguir las convenciones de estilo y mantener el código ordenado
+6. **Testing**: Verificar el funcionamiento en diferentes escenarios y dispositivos 
