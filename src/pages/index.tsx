@@ -13,6 +13,9 @@ function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   const { isAuthenticated, user } = useAuth();
 
+  const { siteConfig } = useDocusaurusContext();
+  const { isAuthenticated, user } = useAuth();
+
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
@@ -28,6 +31,20 @@ function HomepageHeader() {
             style={{ marginRight: '10px' }}>
             Documentación 📚
           </Link>
+          
+          {isAuthenticated ? (
+            <Link
+              className="button button--success button--lg"
+              to="/protected">
+              Acceder a Contenido Protegido 🔒
+            </Link>
+          ) : (
+            <Link
+              className="button button--info button--lg"
+              to="/auth">
+              Iniciar Sesión / Registrarse 🚪
+            </Link>
+          )}
         </div>
         
         {isAuthenticated && user && (
