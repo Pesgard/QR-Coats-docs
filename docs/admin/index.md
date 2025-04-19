@@ -9,6 +9,7 @@ El Panel de Administración es una aplicación web desarrollada con React y Type
 ## Visión General
 
 El Panel de Administración proporciona funcionalidades para gestionar:
+
 - Cuentas de usuarios y empleados
 - Clubes y sus configuraciones
 - Ubicaciones, racks y slots
@@ -104,26 +105,31 @@ El Panel de Administración está construido con:
 ## Características Principales
 
 ### Autenticación y Autorización
+
 - Sistema de login/logout
 - Protección de rutas
 - Persistencia de sesión
 
 ### Gestión de Clubes
+
 - Creación y edición de clubes
 - Administración de servicios
 - Configuración de horarios y reglas
 
 ### Gestión de Ubicaciones y Recursos
+
 - Administración de ubicaciones, racks y slots
 - Asignación de recursos
 - Visualización de estado en tiempo real
 
 ### Códigos QR
+
 - Generación de códigos QR
 - Seguimiento de estado
 - Gestión de códigos de descuento
 
 ### UI Moderna y Responsiva
+
 - Diseño moderno con Material UI
 - Soporte para diferentes dispositivos y tamaños de pantalla
 - Tema personalizable
@@ -131,6 +137,7 @@ El Panel de Administración está construido con:
 ## Integración con APIs
 
 El Panel de Administración se comunica con las siguientes APIs:
+
 - **API de Autenticación**: Para gestión de sesiones
 - **API de Empleados**: Para gestión de clubes, ubicaciones y recursos
 - **API de QR**: Para gestión de códigos QR
@@ -179,4 +186,4 @@ La aplicación tiene dos modos principales de navegación:
 3. **TypeScript**: Definir interfaces para todos los datos
 4. **Estado global**: Utilizar Redux para estado compartido entre componentes
 5. **Hooks personalizados**: Encapsular lógica reutilizable en hooks
-6. **Consistencia de diseño**: Seguir el tema y patrones de diseño establecidos 
+6. **Consistencia de diseño**: Seguir el tema y patrones de diseño establecidos

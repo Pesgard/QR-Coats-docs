@@ -9,6 +9,7 @@ El API QR es un servicio basado en NestJS que proporciona toda la funcionalidad 
 ## Visión General
 
 El API QR proporciona:
+
 - Generación y gestión de códigos QR
 - Procesamiento de pagos con Stripe y Moneris
 - Gestión de pases digitales (Apple Wallet/Google Wallet)
@@ -110,10 +111,12 @@ qr-api/
 La documentación detallada de la API está disponible a través de Swagger en `/api/docs` cuando la aplicación está en ejecución.
 
 ### Autenticación
+
 - `POST /api/v1/auth/login` - Iniciar sesión
-- `POST /api/v1/auth/register` - Registrar nuevo usuario
+<!-- - `POST /api/v1/auth/register` - Registrar nuevo usuario -->
 
 ### QR
+
 - `GET /api/v1/qr` - Listar todos los códigos QR
 - `GET /api/v1/qr/:id/url` - Obtener URL del QR por ID
 - `POST /api/v1/qr` - Crear un nuevo código QR
@@ -122,10 +125,12 @@ La documentación detallada de la API está disponible a través de Swagger en `
 - `POST /api/v1/qr/upload-s3` - Subir archivo a S3
 
 ### Pagos
+
 - `POST /api/v1/payment/create-payment-intent` - Crear intento de pago con Stripe
 - `POST /api/v1/moneris/process-payment` - Procesar pago con Moneris
 
 ### Pases Digitales
+
 - `POST /api/v1/pass/generate` - Generar un pase digital para Apple/Google Wallet
 - `GET /api/v1/pass/:id` - Obtener un pase digital existente
 
@@ -189,13 +194,16 @@ app.useWebSocketAdapter(new IoAdapter(app));
 ## Solución de Problemas Comunes
 
 ### Problemas de Conexión a MongoDB
+
 - Verifica la cadena de conexión en el archivo `.env`
 - Asegúrate de que tu IP tenga permiso para acceder a MongoDB Atlas
 
 ### Errores en la Generación de Pases
+
 - Verifica que los certificados en la carpeta `certs/` sean válidos
 - Asegúrate de que las plantillas en `passModels/` estén correctamente configuradas
 
 ### Errores en los Pagos
+
 - Verifica las claves API de Stripe/Moneris
-- Revisa los logs para identificar mensajes de error específicos 
+- Revisa los logs para identificar mensajes de error específicos

@@ -39,8 +39,7 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/qrcoats/qrcoats-docs/tree/main/",
+          editUrl: "https://github.com/qrcoats/qrcoats-docs/tree/main/",
         },
         blog: {
           showReadingTime: true,
@@ -50,8 +49,7 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/qrcoats/qrcoats-docs/tree/main/",
+          editUrl: "https://github.com/qrcoats/qrcoats-docs/tree/main/",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
@@ -84,7 +82,6 @@ const config: Config = {
       },
     ],
   ],
-
   markdown: {
     mermaid: true,
   },
@@ -97,7 +94,7 @@ const config: Config = {
       },
     ],
   ],
-  
+
   themeConfig: {
     // Replace with your project's social card
     image: "img/qrcoats-social-card.jpg",
@@ -120,7 +117,6 @@ const config: Config = {
           label: "GitHub",
           position: "right",
         },
-        
       ],
     },
     footer: {
